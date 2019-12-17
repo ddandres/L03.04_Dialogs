@@ -1,4 +1,8 @@
-package com.example.android.l0304_dialogs;
+/*
+ * Copyright (c) 2019. David de Andrés and Juan Carlos Ruiz, DISCA - UPV, Development of apps for mobile devices.
+ */
+
+package labs.dadm.l0304_dialogs;
 
 import android.content.Context;
 
