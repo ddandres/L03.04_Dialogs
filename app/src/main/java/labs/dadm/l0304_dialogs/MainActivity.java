@@ -4,7 +4,6 @@
 
 package labs.dadm.l0304_dialogs;
 
-import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -33,25 +32,21 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle(R.string.clear_all);
         // Set an icon to be displayed
         final Drawable icon = ContextCompat.getDrawable(MainActivity.this, android.R.drawable.stat_sys_warning);
-        icon.setTint(ContextCompat.getColor(MainActivity.this, R.color.colorAccent));
-        builder.setIcon(icon);
+        if (icon != null) {
+            icon.setTint(ContextCompat.getColor(MainActivity.this, R.color.colorAccent));
+            builder.setIcon(icon);
+        }
         // Set the message to be displayed
         builder.setMessage(R.string.are_you_sure);
         // Set a button for a positive action
-        builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Display a message when clicked
-                Toast.makeText(MainActivity.this, R.string.answer_no, Toast.LENGTH_SHORT).show();
-            }
+        builder.setNegativeButton(android.R.string.no, (dialog, which) -> {
+            // Display a message when clicked
+            Toast.makeText(MainActivity.this, R.string.answer_no, Toast.LENGTH_SHORT).show();
         });
         // Set a button for a negative action
-        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Display a message when clicked
-                Toast.makeText(MainActivity.this, R.string.answer_yes, Toast.LENGTH_SHORT).show();
-            }
+        builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
+            // Display a message when clicked
+            Toast.makeText(MainActivity.this, R.string.answer_yes, Toast.LENGTH_SHORT).show();
         });
         // Prevent the dialog from being cancelled
         builder.setCancelable(false);
