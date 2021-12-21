@@ -6,7 +6,6 @@ package labs.dadm.l0304_dialogs;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,23 +14,20 @@ import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    AlertDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    /*
-        This method will be executed when the button is clicked.
-        It will display a Dialog.
-     */
-    public void clearAllContacts(View view) {
         // AlertDialog.Builder to help create a custom dialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         // Set the title of the dialog
         builder.setTitle(R.string.clear_all);
         // Set an icon to be displayed
-        final Drawable icon = ContextCompat.getDrawable(MainActivity.this, android.R.drawable.stat_sys_warning);
+        final Drawable icon = ContextCompat.getDrawable(
+                MainActivity.this, android.R.drawable.stat_sys_warning);
         if (icon != null) {
             icon.setTint(ContextCompat.getColor(MainActivity.this, R.color.colorAccent));
             builder.setIcon(icon);
@@ -46,13 +42,16 @@ public class MainActivity extends AppCompatActivity {
         // Set a button for a negative action
         builder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
             // Display a message when clicked
-            Toast.makeText(MainActivity.this, R.string.answer_yes, Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    MainActivity.this, R.string.answer_yes, Toast.LENGTH_SHORT).show();
         });
         // Prevent the dialog from being cancelled
         builder.setCancelable(false);
         // Create the dialog
-        final AlertDialog dialog = builder.create();
-        // SHow the dialog
-        dialog.show();
+        dialog = builder.create();
+
+        // Show the dialog when clicked
+        findViewById(R.id.ivDialog).setOnClickListener(v -> dialog.show());
     }
+
 }

@@ -6,7 +6,8 @@
     <string name="app_name">L03.04_Dialogs</string>
     <!-- String to be used by the Dialog -->
     <string name="clear_all">Clear all contacts from phone</string>
-    <string name="are_you_sure">Are you sure that you want to remove <b>ALL</b> your contacts from the phone?</string>
+    <string name="are_you_sure">
+        Are you sure that you want to remove <b>ALL</b> your contacts from the phone?</string>
     <string name="answer_no">Wise guy!</string>
     <string name="answer_yes">You asked for it!</string>
 </resources>
